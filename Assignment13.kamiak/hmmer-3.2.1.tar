@@ -1,0 +1,2130 @@
+│                • MobaXterm Personal Edition v11.1 •                │
+ │              (X server, SSH client and network tools)              │
+ │                                                                    │
+ │ ➤ Your computer drives are accessible through the /drives path     │
+ │ ➤ Your DISPLAY is set to 172.19.80.145:0.0                         │
+ │ ➤ When using SSH, your remote DISPLAY is automatically forwarded   │
+ │ ➤ Each command status is specified by a special symbol (✔ or ✘)    │
+ │                                                                    │
+ │ • Important:                                                       │
+ │ This is MobaXterm Personal Edition. The Professional edition       │
+ │ allows you to customize MobaXterm for your company: you can add    │
+ │ your own logo, your parameters, your welcome message and generate  │
+ │ either an MSI installation package or a portable executable.       │
+ │ We can also modify MobaXterm or develop the plugins you need.      │
+ │ For more information: https://mobaxterm.mobatek.net/download.html  │
+ └────────────────────────────────────────────────────────────────────┘
+
+[2019-04-24 10:07.39]  ~
+[Jeanette.Rodriguez.LAPTOP-DCS18HUB] ➤ ssh pragya.asthana@kamiak.wsu.edu
+pragya.asthana@kamiak.wsu.edu's password:
+
+Welcome to Kamiak!
+
+Documentation on this system can be found at:
+https://hpc.wsu.edu
+
+Use of Kamiak implies your acceptance of Kamiak's End User License Agreement,
+which is available at: https://hpc.wsu.edu/eula
+
+To see all the software that is available across all compilers and
+MPI stacks, issue: "module spider"
+
+You have access to the following compute partitions:
+free_gpu, hort503, kamiak, test
+
+[pragya.asthana@login-p1n02 ~]$ idev
+Idev interactively runs commands on a compute node.
+See 'man salloc' for idev options to reserve a job allocation.
+To use a GPU within idev: use 'srun yourCommand', e.g. 'srun python -i'.
+To use X11 forwarding from a compute node:
+Use 'ssh -Y' or more secure 'ssh -X' to log into Kamiak.
+Within idev, use 'srun --x11' to launch a task with a user interface.
+Recommend using 'srun -I' to launch a task without hanging.
+Default time is 60 minutes.  Use '-t yourMinutes' to override.
+
+salloc: Pending job allocation 8791870
+salloc: job 8791870 queued and waiting for resources
+salloc: job 8791870 has been allocated resources
+salloc: Granted job allocation 8791870
+Allocated nodes: cn105
+[pragya.asthana@cn105 ~]$ pwd
+/home/pragya.asthana
+[pragya.asthana@cn105 ~]$ mkdir downloads
+[pragya.asthana@cn105 ~]$ cd downloads/
+[pragya.asthana@cn105 downloads]$ wget 'http://eddylab.org/software/hmmer3/3.1b1/hmmer-3.1b1.tar.gz' -0 hmmer-3.1b1.tar.gz
+wget: invalid option -- '0'
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help' for more options.
+[pragya.asthana@cn105 downloads]$ ^C
+[pragya.asthana@cn105 downloads]$ wget 'http://eddylab.org/software/hmmer3/3.1b1/hmmer-3.1b1.tar.gz' -0 hmmer-3.1b1.tar.gz
+wget: invalid option -- '0'
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help' for more options.
+[pragya.asthana@cn105 downloads]$ wget 'http://eddylab.org/software/hmmer3/3.1b1/hmmer-3.1b1.tar.gz' -O hmmer-3.1b1.tar.gz
+--2019-04-24 10:29:37--  http://eddylab.org/software/hmmer3/3.1b1/hmmer-3.1b1.tar.gz
+Resolving eddylab.org (eddylab.org)... 96.126.110.11, 2600:3c03::f03c:91ff:fec8:383c
+Connecting to eddylab.org (eddylab.org)|96.126.110.11|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5778584 (5.5M) [application/x-gzip]
+Saving to: ‘hmmer-3.1b1.tar.gz’
+
+100%[===========================================================================================================================>] 5,778,584   4.67MB/s   in 1.2s
+
+2019-04-24 10:29:38 (4.67 MB/s) - ‘hmmer-3.1b1.tar.gz’ saved [5778584/5778584]
+
+[pragya.asthana@cn105 downloads]$ ls
+hmmer-3.1b1.tar.gz
+[pragya.asthana@cn105 downloads]$ gzip -d hmmer-3.1b1.tar
+[pragya.asthana@cn105 downloads]$ ls
+hmmer-3.1b1.tar
+[pragya.asthana@cn105 downloads]$ tar -xf hmmer-3.1b1.tar
+[pragya.asthana@cn105 downloads]$ ls
+hmmer-3.1b1  hmmer-3.1b1.tar
+[pragya.asthana@cn105 downloads]$ cd hmmer-3.1b1/
+[pragya.asthana@cn105 hmmer-3.1b1]$ ls
+aclocal.m4    config.sub  configure.ac  documentation  INSTALL     libdivsufsort  Makefile.in  README         src        tutorial
+config.guess  configure   COPYRIGHT     easel          install-sh  LICENSE        profmark     RELEASE-NOTES  testsuite  Userguide.pdf
+[pragya.asthana@cn105 hmmer-3.1b1]$ less INSTALL
+[pragya.asthana@cn105 hmmer-3.1b1]$ ./configure
+configure: Configuring HMMER for your system.
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+configure: Full HMMER source distribution - using full configuration
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for C compiler vendor... gnu
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for cc_r... gcc
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking how to run the C preprocessor... gcc -E
+checking for C compiler vendor... (cached) gnu
+checking for gcc option to accept ISO C99... none needed
+checking for gcc option to accept ISO Standard C... (cached) none needed
+checking for ranlib... ranlib
+checking for ar... /usr/bin/ar
+checking whether you have a GNU make... yes, you do; and we assume you will use it!
+checking whether C compiler accepts -fstrict-aliasing... yes
+checking for gcc architecture flag...
+checking for x86 cpuid 0 output... 14:756e6547:6c65746e:49656e69
+checking for x86 cpuid 1 output... 406f1:3a200800:7ffefbff:bfebfbff
+checking whether C compiler accepts -march=pentiumpro... no
+checking whether C compiler accepts -mcpu=pentiumpro... no
+checking whether C compiler accepts -mpentiumpro... no
+checking for gcc architecture flag... unknown
+checking whether C compiler accepts -O3 -fomit-frame-pointer -fstrict-aliasing... yes
+checking for gcc option to produce PIC... -fPIC
+checking whether C compiler accepts -msse2... yes
+checking compiler support for sse2 cast functions... yes
+checking whether SSE2 is supported... yes
+checking whether _MM_SET_FLUSH_ZERO_MODE is supported... yes
+configure: Activating Intel/AMD SSE optimized DP implementation
+checking compiler support --start-group... yes
+checking for gzip... /usr/bin/gzip
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for sys/types.h... (cached) yes
+checking sys/sysctl.h usability... yes
+checking sys/sysctl.h presence... yes
+checking for sys/sysctl.h... yes
+checking for unistd.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking endian.h usability... yes
+checking endian.h presence... yes
+checking for endian.h... yes
+checking whether byte ordering is bigendian... no
+checking for uint8_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for off_t... yes
+checking for mkstemp... yes
+checking for popen... yes
+checking for strcasecmp... yes
+checking for times... yes
+checking for getpid... yes
+checking for sysctl... yes
+checking for sysconf... yes
+checking for getcwd... yes
+checking for stat... yes
+checking for fstat... yes
+checking for ntohs... yes
+checking for ntohl... yes
+checking for htons... yes
+checking for htonl... yes
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+configure: creating ./config.status
+config.status: creating documentation/Makefile
+config.status: creating documentation/man/Makefile
+config.status: creating src/Makefile
+config.status: creating testsuite/Makefile
+config.status: creating profmark/Makefile
+config.status: creating src/impl_sse/Makefile
+config.status: creating easel/miniapps/Makefile
+config.status: creating easel/testsuite/Makefile
+config.status: creating easel/Makefile
+config.status: creating libdivsufsort/Makefile
+config.status: creating Makefile
+config.status: creating src/p7_config.h
+config.status: creating easel/esl_config.h
+config.status: creating libdivsufsort/divsufsort.h
+config.status: linking src/impl_sse to src/impl
+
+
+HMMER configuration:
+ compiler:             gcc -O3 -fomit-frame-pointer -fstrict-aliasing -msse2 -pthread -fPIC
+ host:                 x86_64-unknown-linux-gnu
+ linker:
+ libraries:
+ DP implementation:    sse
+
+[pragya.asthana@cn105 hmmer-3.1b1]$ salloc: Job 8791870 has exceeded its time limit and its allocation has been revoked.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: cn105: task 0: Terminated
+[pragya.asthana@login-p1n02 ~]$ idev
+Idev interactively runs commands on a compute node.
+See 'man salloc' for idev options to reserve a job allocation.
+To use a GPU within idev: use 'srun yourCommand', e.g. 'srun python -i'.
+To use X11 forwarding from a compute node:
+Use 'ssh -Y' or more secure 'ssh -X' to log into Kamiak.
+Within idev, use 'srun --x11' to launch a task with a user interface.
+Recommend using 'srun -I' to launch a task without hanging.
+Default time is 60 minutes.  Use '-t yourMinutes' to override.
+
+salloc: Pending job allocation 8794814
+salloc: job 8794814 queued and waiting for resources
+salloc: job 8794814 has been allocated resources
+salloc: Granted job allocation 8794814
+Allocated nodes: cn112
+[pragya.asthana@cn112 ~]$ cd downloads/
+[pragya.asthana@cn112 downloads]$ cd hmmer-3.1b1/
+[pragya.asthana@cn112 hmmer-3.1b1]$ ./configure --prefix /data/hort503/pragya/software
+configure: Configuring HMMER for your system.
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+configure: Full HMMER source distribution - using full configuration
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for C compiler vendor... gnu
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for cc_r... gcc
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking how to run the C preprocessor... gcc -E
+checking for C compiler vendor... (cached) gnu
+checking for gcc option to accept ISO C99... none needed
+checking for gcc option to accept ISO Standard C... (cached) none needed
+checking for ranlib... ranlib
+checking for ar... /usr/bin/ar
+checking whether you have a GNU make... yes, you do; and we assume you will use it!
+checking whether C compiler accepts -fstrict-aliasing... yes
+checking for gcc architecture flag...
+checking for x86 cpuid 0 output... 16:756e6547:6c65746e:49656e69
+checking for x86 cpuid 1 output... 50654:14200800:7ffefbff:bfebfbff
+checking whether C compiler accepts -march=pentium2... no
+checking whether C compiler accepts -mcpu=pentium2... no
+checking whether C compiler accepts -mpentium2... no
+checking whether C compiler accepts -march=pentiumpro... no
+checking whether C compiler accepts -mcpu=pentiumpro... no
+checking whether C compiler accepts -mpentiumpro... no
+checking for gcc architecture flag... unknown
+checking whether C compiler accepts -O3 -fomit-frame-pointer -fstrict-aliasing... yes
+checking for gcc option to produce PIC... -fPIC
+checking whether C compiler accepts -msse2... yes
+checking compiler support for sse2 cast functions... yes
+checking whether SSE2 is supported... yes
+checking whether _MM_SET_FLUSH_ZERO_MODE is supported... yes
+configure: Activating Intel/AMD SSE optimized DP implementation
+checking compiler support --start-group... yes
+checking for gzip... /usr/bin/gzip
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for sys/types.h... (cached) yes
+checking sys/sysctl.h usability... yes
+checking sys/sysctl.h presence... yes
+checking for sys/sysctl.h... yes
+checking for unistd.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking endian.h usability... yes
+checking endian.h presence... yes
+checking for endian.h... yes
+checking whether byte ordering is bigendian... no
+checking for uint8_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for off_t... yes
+checking for mkstemp... yes
+checking for popen... yes
+checking for strcasecmp... yes
+checking for times... yes
+checking for getpid... yes
+checking for sysctl... yes
+checking for sysconf... yes
+checking for getcwd... yes
+checking for stat... yes
+checking for fstat... yes
+checking for ntohs... yes
+checking for ntohl... yes
+checking for htons... yes
+checking for htonl... yes
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+configure: creating ./config.status
+config.status: creating documentation/Makefile
+config.status: creating documentation/man/Makefile
+config.status: creating src/Makefile
+config.status: creating testsuite/Makefile
+config.status: creating profmark/Makefile
+config.status: creating src/impl_sse/Makefile
+config.status: creating easel/miniapps/Makefile
+config.status: creating easel/testsuite/Makefile
+config.status: creating easel/Makefile
+config.status: creating libdivsufsort/Makefile
+config.status: creating Makefile
+config.status: creating src/p7_config.h
+config.status: src/p7_config.h is unchanged
+config.status: creating easel/esl_config.h
+config.status: easel/esl_config.h is unchanged
+config.status: creating libdivsufsort/divsufsort.h
+config.status: libdivsufsort/divsufsort.h is unchanged
+config.status: linking src/impl_sse to src/impl
+
+
+HMMER configuration:
+ compiler:             gcc -O3 -fomit-frame-pointer -fstrict-aliasing -msse2 -pthread -fPIC
+ host:                 x86_64-unknown-linux-gnu
+ linker:
+ libraries:
+ DP implementation:    sse
+
+[pragya.asthana@cn112 hmmer-3.1b1]$ cd /data/hort503/pragya/
+[pragya.asthana@cn112 pragya]$ make
+make: *** No targets specified and no makefile found.  Stop.
+[pragya.asthana@cn112 pragya]$ make install
+make: *** No rule to make target `install'.  Stop.
+[pragya.asthana@cn112 pragya]$ ls
+blastp-rice_all-vs-swissprot-th_1e-6.txt  blast_test.srun  blast_test.sruny  pragya  slurm-8763497.out  slurm-8763819.out  test.txt
+[pragya.asthana@cn112 pragya]$ cd home/
+bash: cd: home/: No such file or directory
+[pragya.asthana@cn112 pragya]$ cd /home/
+[pragya.asthana@cn112 home]$ ls
+a.amiri              bo.xu                drcall               jake.gray           kevan.moffett        michael.f.meyer      rafal.gorniak        steve.powers
+aaron.lightner       bradley.luff         dshah                james.irwin         kevin.ulstad         michael.ortiz        ramesh.sah           stockle
+aaronw               brandon.kallaher     dustin.mclarty       jana.doppa          keyvan.malek         michael.pecha        ramyya.hari          sujala.bhattarai
+aaronw.T1HI          brcarlson            dutoit               jarod.herrera       keyvan.sasani        michael.saxton       rasool.mohebifard    su-ju.wang
+abates09             breanna.wong         dybdahl              jason.flynn         kgcamp               michael.servis       rathbuns             suman.karki
+abhijay.ghildyal     brett.devine         d.y.lee              jason.kramberger    kimberly.m.hansen    michael.tobler       ravi.appana          s.vodnala
+abigail.hudak        brett.vanderwerff    ecrowell4            jason.lonergan      kipeters             michelle.wu          rebecca.holcomb      syrine.belakaria
+ab-jahanbekam        brian.cheldelin      edhagen              jason.price         kiriti.kanjilal      mike.guerra          reid.tissing         tarang.khangaonkar
+acarnahan            brian.w.davis        edom.moges           jave                kirtir               miles.roberts        renqin.zhang         thibaut.martin
+ace.cassidy          bruce.gomes          edward.delikatny     jbjewell            kiwamu.tanaka        mingliang.liu        rfhe                 thomas.badman
+acrandal             bryan.valley         e.jimenezschwarzkop  jcadam              k.lazaridis          min.ye               richard.manasseh     tiecheng.zhou
+adekunle.adesanya    bsb                  elise.held           jeevake.attapattu   konkel               m.kazemi             richard.schumaker    tim.ginn
+adhingra             btanner              elizabeth.j.wilson   jeevan.gc           korey.brownstein     m.kucukkal           richard.white3       tim.neumann
+a.djibowaziri        bwaustin             e.martinezbaez       jeffrey.mcmahon     kristin.roche        mmneff               richelle.tanner      timothy.daniel
+adnan.morshed        b.williamsonbenavid  emily.anderst        jeffrey.preston     k.sandhu             m.namaki             rjmcgee              tina.karimi
+adriana.carbon       b.younginger         emily.harris3        jeff.white          ksgill               mohammadomar.faruk   rnelson              tinghui.wang
+afef.marzougui       caren.goldberg       emily.klarquist      jennifer.wells      ktoman               mohsen.damadam       robert.schaeffer     tomsovic
+a.fernandezvaldes    carlie.harding       emily.mclachlan      jerlenbach          k.tsampourakis       morteza.mehrnoush    robert.stancil       tpeever
+a.fiston-lavier      carly.prior          emma.cordray         jesse.brunner       kuz                  m.pouvreau           rodney.cooper        travis.volz
+afsha.tabassum       cekruger             enrique.alvarado     jessica.ortiz       kyle.groden          m.pumphrey           rohit.dhariwal       trent.clostio
+ahmed.bensahil       chance.desmet        eric.dexter          jethin.pulikkottil  lafferty             m.shiraj             rolf.hermanson       trevor.t.wood
+aidan.garcia         chandra.jack         eric.lofgren         jfdsac              laining.zhang        msubbiah             romana.iftikhar      truff
+aiyana.price         charlotte.walker     eric_roalson         jhheiss             lance.edens          muhuntha             ronald.lam           truong-son.nguyen
+a.lang-nevyjel       chase.beathard       erika.kruse          jhocum              lange-m              mykhailo.bykhovtsev  r.roukerd            tsengel.nergui
+alexander.alleman    chens                erin.hanan           jhumann             laura.helou          nadia.panossian      rsharpe              tshering.sherpa
+alexander.brown      chen.xu3             eshelden             jianning.ren        lauren.ricci         narayanan.srividya   rui.luo2             tung.nguyen
+alexander.s.blackbu  chongjing.xia        esraa.alwan          jikhan.jeong        leandro.roser        narayan.paul         ryan_christian       tyler.coy
+alexandra.fraik      chris.kang           evan.stowe           jing.wang6          lei.zhang            nathaniel.boyer      ryan.driskell        umar.farooq
+alex.batson          chris.keane          fabio.scarpare       jing.wang9          leonardo.orozco      nathaniel.burley     ryan.greenway        valda.black
+alex.dimitrov        chris.kozakiewicz    fanglin.che          jinhui.bai          l.gananbetancur      nathan_law           ryan.lamastro        vishnutej.ellur
+alex.fremier         chris.mundy          fang.zhu             jinlu.shen          liklu                nathan.layman        ryan.summers         v.walden
+alexia.gee           christopher.pereyda  fan.zhang4           jin.tao             lindani.moyo         nazar.stelmakh       samantha.kallinen    wade.roberts
+alex.mccue           christopher.short    farzaneh.sharifi     jin.zhang3          lindsay.welfelt      ndegwa               samantha.r.bennett   wei-jyun.wang
+ali.hajbabaie        christopher.szlenk   f.cevahir            jjreyes             li.tian              neda.khosravi        samuel.battey        wenjie.yan
+alireza.ghods        christopher.watson   f.chowdhury          jmiller16           ljones1              neeru.chaudhary      sanja                wes.dowd
+allan.e.jones        chunde.huang         fei.luo              joanna.l.kelley     luana.lins           nekogda              saptarshi.sarkar     wesnyder
+allegra.sundstrom    chun-huai.cheng      frel.feng            joatley             lucia.peixoto        niall.millar         sarah.kehr           wielgus
+allison.cramer       chun-peng.chen       frenchb              joe.ashmore         lucia.salz           nicholas.a.potter    saranah.selmi        wildung
+a.love               chuntao_yin          gabriel.delacruz     joel.sowders        lvsmith              nicholas.barts       sasa.kovacevic       william.burnham
+alyssa.parish        claiborn             gaganjot.sidhu       joel.t.nelson       lydia.lam            nicholas.kelly       sasha.richey         william.t.smith
+alyssa.rose          clarence.king        gangd                joel.velasco        madavis              nicholas.mueth       scot_hulbert         w.winuthayanon
+amccubbin            clark.kogan          garrett.wilson       johannah.hooft      madhu.kappagantu     nicholas.strazis     scott.beckman        xiangrui.wang
+ames.fowler          cmcooper             gbcollinge           johannetsy.avillan  madison.armstrong    nick.engdahl         scott.hotaling       xianming
+amit.sharma2         collette.mair        geoff                john.coffin         mahshid.fard         nick.maggio          sean.mossman         xiaofan.ruan
+ananth               connor.wytko         geoff.T1HI           john.hadish         maia.whitley         nick.negretti        seanna.hewitt        xiaolu.zhu
+andrew.cannon        corey.quackenbush    g.herrerabirrueta    john_harrison       maiporn.maipoka      nick.pappin          senthil.natesan      xiaoning.yang
+andrew.iverson       courtney.jensen      giridhar.manoharan   john.koberstein     marcelina.parra      nick.strigul         seyediman.mirzadeh   xiaosong.li
+andrew.lefors        cpeace               gopikrishna.kafle    john.mccloy         marcos.perez         nisa.ulumuddin       sfprice              xinheng.gong
+andrew.m.launder     craig.tenney         grant.hutchings      john_yates          marcus.hooker        nitesh.kumar         s.hampton            xin.tu2
+angeliqua.montoya    cristian.olayaarias  grant.nelson         jonathan.eagle      mareike.peters       n.kannappanjayakodi  shao.lu              xin.xin
+aniruddha.dive       ctrobbins            greg.schenter        jordan.munson       marissa.grubbs       n.voulgarakis        shawn.trojahn        xiyu.xie
+anna.potapova        cwb13                haixiao.dong         jordan.roth2        mark.margres         okita                shengting.cui        xuechen.zhang
+anna.pratt           cynthia.gleason      hannah.kim2          jordan.zager        mark.mccauley        oleg.zadvornyy       shervin.hajiamini    xu.liu2
+anthony.p.brown      dajohn               hao_peng             joseph.deshields    mark.smithson        olga.kozhar          shipeng.li           yanz.xing
+arnab.mishra         danelle.roan         hardingj             josephine_afema     mark.vandam          olvar.bergland       shira                yao.huang
+ashish.kondal        daniel.farber        harrison.anthony     joseph.kleinkopf    marston              omar.cornejo         shirazi              yayun.qiao
+ashley.huynh         daniel.j.pope        hassan.ghasemzadeh   joseph.lanska       martin.poglin        pacbio               shivam.goel          yayun.zhang
+assefaw.gebremedhin  danielle.guzman      heidi.hough          joseph.m.taylor     marwan.gagaa         paige.henning        s.hossein.sadeghi    y.demissie
+astorfer             danilo.dasilva       heidi.r.lyons        joseph.schultz      matt2011             parastoo.alinia      sierra.wenz          yinglei.han
+a.talebanpour        darby.fox            hellmann             josh.burns          matthew.brousil      paul.mihalyov        simon.alsager        ying.zhai
+atit.parajuli        david.semrouni       heng.wang            joshua.foley        matthew.e.taylor     paul.nabity          simone.raugei        yiyong.liu
+auclark              david.silva          henning.kunz         jpiaskowski         matthew.lawrance     pegah.mavaie         sindhuja.sankaran    yuanhong.song
+austin.green         david.sliman         heping.liu           jpipkins            matthew.mietchen     peng_mao             siva                 yuan.wang
+austin.patton        david.wheeler        hipps                jschnore            matt.mcgowan         peter.brennan        skylar.johnson       yulong.ma
+ayca.seker           daylan.kelting       hlei                 js.mcewen           matt.ries            peter.mills          skyler.norgaard      yu.ma
+babak.abbasi         dcrowder             hlopez               justingriffis       m-a.willis           peter.mills.T1HI     slapin               yunha.lee
+bao.nguyen           deah.mcgaughey       hoardsa              jwbusch             mcaudell             peter.zamora         slurm                yunshu.du
+bbonner              deepti.singh         holder               jw.peters           mdkamrulhoque.ome    ping_zheng           smesarovic           yuxiang.li
+behzad.ghazanfari    den.lozada           hong.zhong           kahn                mdkhalid.hossain     pooch                s.muniyalkrishna     zachary.culumber
+belzer               dennis.crain         hrp                  kai.fan             mdnurul.amin         pragya.asthana       soklong.lim          zara.york
+bernard.hall         dequan               h.schoch             kaija.broders       mdrakibul.islam      prashanta            sompop.saeheng       zbib
+bertrand.tanner      derya.eroglukaraca   hsin-hua.wu          kamrul.ome          megan.chastain       praveen.sharma       s.orugantisaiprakas  zhen.fu
+beyenal              deven_see            ian.dejoode          karen.sanguinet     meghan.parsley       praveer.tiwari       sowmya.ramachandran  zhenhai.cui
+bhaskar.chilukuri    deviyani.gurung      ian.kosen            karol.krey          mehdi.hamid          qing.lu              srijanie.dey         zhi-gang.yu
+biggst               diane                ilange               kat.anderson        mehrzad.mehrabipour  qingze.guan          stacy.schauls        zhijie.nie
+biljana.mrkela       djcook               ilisaliu             kathryn.dubois      meijing.liang        qi.song              stephanie.labou      zhiwu.zhang
+bin.shan             d.martinezalpizar    irmak.sargin         kayla.cribbin       m.forbes             quan.phan            stephanie.porter     zhiyou.zong
+bin.yang             dnevins              isaac.duah           kcooper             m.friesen            q.zhang              stephen.ficklin      zhizhang.shen
+blake.cohoe          doerte               jacob.bray           keeper.sharkey      mgarcia-perez        rachael.detar        steve.katz           zhu.liu
+bocinsky             dominik.schneider    jacob.mutch          kenny.haak          mhutchens            rachel.dannay        steven.peyron        ziyi.chen
+boris.houenou        dorrie               jacob.pennington     kerry.mcgowan       michael.apasiku      racorbin             steven.roberts2
+[pragya.asthana@cn112 home]$ cd downloads/
+bash: cd: downloads/: No such file or directory
+[pragya.asthana@cn112 home]$ exit
+exit
+srun: error: cn112: task 0: Exited with exit code 1
+salloc: Relinquishing job allocation 8794814
+[pragya.asthana@login-p1n02 ~]$ exit
+logout
+Connection to kamiak.wsu.edu closed.
+                                                                                                                                                                ✘
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[2019-04-24 11:19.04]  ~
+[Jeanette.Rodriguez.LAPTOP-DCS18HUB] ➤ ssh pragya.asthana@kamiak.wsu.edu
+pragya.asthana@kamiak.wsu.edu's password:
+
+Welcome to Kamiak!
+
+Documentation on this system can be found at:
+https://hpc.wsu.edu
+
+Use of Kamiak implies your acceptance of Kamiak's End User License Agreement,
+which is available at: https://hpc.wsu.edu/eula
+
+To see all the software that is available across all compilers and
+MPI stacks, issue: "module spider"
+
+You have access to the following compute partitions:
+free_gpu, hort503, kamiak, test
+
+[pragya.asthana@login-p1n02 ~]$ pwd
+/home/pragya.asthana
+[pragya.asthana@login-p1n02 ~]$ idev
+Idev interactively runs commands on a compute node.
+See 'man salloc' for idev options to reserve a job allocation.
+To use a GPU within idev: use 'srun yourCommand', e.g. 'srun python -i'.
+To use X11 forwarding from a compute node:
+Use 'ssh -Y' or more secure 'ssh -X' to log into Kamiak.
+Within idev, use 'srun --x11' to launch a task with a user interface.
+Recommend using 'srun -I' to launch a task without hanging.
+Default time is 60 minutes.  Use '-t yourMinutes' to override.
+
+salloc: Pending job allocation 8794876
+salloc: job 8794876 queued and waiting for resources
+salloc: job 8794876 has been allocated resources
+salloc: Granted job allocation 8794876
+Allocated nodes: cn112
+[pragya.asthana@cn112 ~]$ cd /data/hort503/pragya/
+[pragya.asthana@cn112 pragya]$ mkdir newsoftware
+[pragya.asthana@cn112 pragya]$ cd newsoftware/
+[pragya.asthana@cn112 newsoftware]$  wget 'http://eddylab.org/software/hmmer3/3.1b1/hmmer-3.1b1.tar.gz' -O hmmer-3.1b1.tar.gz
+--2019-04-24 11:27:11--  http://eddylab.org/software/hmmer3/3.1b1/hmmer-3.1b1.tar.gz
+Resolving eddylab.org (eddylab.org)... 96.126.110.11, 2600:3c03::f03c:91ff:fec8:383c
+Connecting to eddylab.org (eddylab.org)|96.126.110.11|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5778584 (5.5M) [application/x-gzip]
+Saving to: ‘hmmer-3.1b1.tar.gz’
+
+100%[===========================================================================================================================>] 5,778,584   2.14MB/s   in 2.6s
+
+2019-04-24 11:27:14 (2.14 MB/s) - ‘hmmer-3.1b1.tar.gz’ saved [5778584/5778584]
+
+[pragya.asthana@cn112 newsoftware]$ ls
+hmmer-3.1b1.tar.gz
+[pragya.asthana@cn112 newsoftware]$ gzip -d hmmer-3.1b1.tar.gz
+[pragya.asthana@cn112 newsoftware]$ ls
+hmmer-3.1b1.tar
+[pragya.asthana@cn112 newsoftware]$ tar -xf hmmer-3.1b1.tar
+[pragya.asthana@cn112 newsoftware]$ ls
+hmmer-3.1b1  hmmer-3.1b1.tar
+[pragya.asthana@cn112 newsoftware]$ cd hmmer-3.1b1/
+[pragya.asthana@cn112 hmmer-3.1b1]$ ./configure --prefix=$data/hort503/pragya/software
+configure: Configuring HMMER for your system.
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+configure: Full HMMER source distribution - using full configuration
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for C compiler vendor... gnu
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for cc_r... gcc
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking how to run the C preprocessor... gcc -E
+checking for C compiler vendor... (cached) gnu
+checking for gcc option to accept ISO C99... none needed
+checking for gcc option to accept ISO Standard C... (cached) none needed
+checking for ranlib... ranlib
+checking for ar... /usr/bin/ar
+checking whether you have a GNU make... yes, you do; and we assume you will use it!
+checking whether C compiler accepts -fstrict-aliasing... yes
+checking for gcc architecture flag...
+checking for x86 cpuid 0 output... 16:756e6547:6c65746e:49656e69
+checking for x86 cpuid 1 output... 50654:14200800:7ffefbff:bfebfbff
+checking whether C compiler accepts -march=pentium2... no
+checking whether C compiler accepts -mcpu=pentium2... no
+checking whether C compiler accepts -mpentium2... no
+checking whether C compiler accepts -march=pentiumpro... no
+checking whether C compiler accepts -mcpu=pentiumpro... no
+checking whether C compiler accepts -mpentiumpro... no
+checking for gcc architecture flag... unknown
+checking whether C compiler accepts -O3 -fomit-frame-pointer -fstrict-aliasing... yes
+checking for gcc option to produce PIC... -fPIC
+checking whether C compiler accepts -msse2... yes
+checking compiler support for sse2 cast functions... yes
+checking whether SSE2 is supported... yes
+checking whether _MM_SET_FLUSH_ZERO_MODE is supported... yes
+configure: Activating Intel/AMD SSE optimized DP implementation
+checking compiler support --start-group... yes
+checking for gzip... /usr/bin/gzip
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for sys/types.h... (cached) yes
+checking sys/sysctl.h usability... yes
+checking sys/sysctl.h presence... yes
+checking for sys/sysctl.h... yes
+checking for unistd.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking endian.h usability... yes
+checking endian.h presence... yes
+checking for endian.h... yes
+checking whether byte ordering is bigendian... no
+checking for uint8_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for off_t... yes
+checking for mkstemp... yes
+checking for popen... yes
+checking for strcasecmp... yes
+checking for times... yes
+checking for getpid... yes
+checking for sysctl... yes
+checking for sysconf... yes
+checking for getcwd... yes
+checking for stat... yes
+checking for fstat... yes
+checking for ntohs... yes
+checking for ntohl... yes
+checking for htons... yes
+checking for htonl... yes
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+configure: creating ./config.status
+config.status: creating documentation/Makefile
+config.status: creating documentation/man/Makefile
+config.status: creating src/Makefile
+config.status: creating testsuite/Makefile
+config.status: creating profmark/Makefile
+config.status: creating src/impl_sse/Makefile
+config.status: creating easel/miniapps/Makefile
+config.status: creating easel/testsuite/Makefile
+config.status: creating easel/Makefile
+config.status: creating libdivsufsort/Makefile
+config.status: creating Makefile
+config.status: creating src/p7_config.h
+config.status: creating easel/esl_config.h
+config.status: creating libdivsufsort/divsufsort.h
+config.status: linking src/impl_sse to src/impl
+
+
+HMMER configuration:
+ compiler:             gcc -O3 -fomit-frame-pointer -fstrict-aliasing -msse2 -pthread -fPIC
+ host:                 x86_64-unknown-linux-gnu
+ linker:
+ libraries:
+ DP implementation:    sse
+
+[pragya.asthana@cn112 hmmer-3.1b1]$ make install
+/usr/bin/install -c -d /hort503/pragya/software/bin
+/usr/bin/install: cannot create directory ‘/hort503’: Permission denied
+make: *** [install] Error 1
+[pragya.asthana@cn112 hmmer-3.1b1]$ cd /data/
+adam/           cas/            clark/          du_toit/        holder/         kamiak/         mao/            peters-friesen/ ssl/            voulgarakis/
+beegfs/         catalysis/      cornejo/        ficklin/        hort503/        katz/           moffett/        pgfp/           storfer/        winuthayanon/
+busch/          cereo/          cppc/           friesen/        hort550/        kelley/         oatley/         roberts/        tanner/
+cahnrs/         chen/           driskell/       gleason/        hydra/          lee/            pappu/          shelden/        vcea/
+[pragya.asthana@cn112 hmmer-3.1b1]$ cd /data/hort503/pragya/software
+bash: cd: /data/hort503/pragya/software: No such file or directory
+[pragya.asthana@cn112 hmmer-3.1b1]$ cd bin/
+bash: cd: bin/: No such file or directory
+[pragya.asthana@cn112 hmmer-3.1b1]$ ^C
+[pragya.asthana@cn112 hmmer-3.1b1]$ ^C
+[pragya.asthana@cn112 hmmer-3.1b1]$ ./configure --prefix=/data/hort503/pragya/software
+configure: Configuring HMMER for your system.
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+configure: Full HMMER source distribution - using full configuration
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for C compiler vendor... gnu
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for cc_r... gcc
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking how to run the C preprocessor... gcc -E
+checking for C compiler vendor... (cached) gnu
+checking for gcc option to accept ISO C99... none needed
+checking for gcc option to accept ISO Standard C... (cached) none needed
+checking for ranlib... ranlib
+checking for ar... /usr/bin/ar
+checking whether you have a GNU make... yes, you do; and we assume you will use it!
+checking whether C compiler accepts -fstrict-aliasing... yes
+checking for gcc architecture flag...
+checking for x86 cpuid 0 output... 16:756e6547:6c65746e:49656e69
+checking for x86 cpuid 1 output... 50654:14200800:7ffefbff:bfebfbff
+checking whether C compiler accepts -march=pentium2... no
+checking whether C compiler accepts -mcpu=pentium2... no
+checking whether C compiler accepts -mpentium2... no
+checking whether C compiler accepts -march=pentiumpro... no
+checking whether C compiler accepts -mcpu=pentiumpro... no
+checking whether C compiler accepts -mpentiumpro... no
+checking for gcc architecture flag... unknown
+checking whether C compiler accepts -O3 -fomit-frame-pointer -fstrict-aliasing... yes
+checking for gcc option to produce PIC... -fPIC
+checking whether C compiler accepts -msse2... yes
+checking compiler support for sse2 cast functions... yes
+checking whether SSE2 is supported... yes
+checking whether _MM_SET_FLUSH_ZERO_MODE is supported... yes
+configure: Activating Intel/AMD SSE optimized DP implementation
+checking compiler support --start-group... yes
+checking for gzip... /usr/bin/gzip
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for sys/types.h... (cached) yes
+checking sys/sysctl.h usability... yes
+checking sys/sysctl.h presence... yes
+checking for sys/sysctl.h... yes
+checking for unistd.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking endian.h usability... yes
+checking endian.h presence... yes
+checking for endian.h... yes
+checking whether byte ordering is bigendian... no
+checking for uint8_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for off_t... yes
+checking for mkstemp... yes
+checking for popen... yes
+checking for strcasecmp... yes
+checking for times... yes
+checking for getpid... yes
+checking for sysctl... yes
+checking for sysconf... yes
+checking for getcwd... yes
+checking for stat... yes
+checking for fstat... yes
+checking for ntohs... yes
+checking for ntohl... yes
+checking for htons... yes
+checking for htonl... yes
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+configure: creating ./config.status
+config.status: creating documentation/Makefile
+config.status: creating documentation/man/Makefile
+config.status: creating src/Makefile
+config.status: creating testsuite/Makefile
+config.status: creating profmark/Makefile
+config.status: creating src/impl_sse/Makefile
+config.status: creating easel/miniapps/Makefile
+config.status: creating easel/testsuite/Makefile
+config.status: creating easel/Makefile
+config.status: creating libdivsufsort/Makefile
+config.status: creating Makefile
+config.status: creating src/p7_config.h
+config.status: src/p7_config.h is unchanged
+config.status: creating easel/esl_config.h
+config.status: easel/esl_config.h is unchanged
+config.status: creating libdivsufsort/divsufsort.h
+config.status: libdivsufsort/divsufsort.h is unchanged
+config.status: linking src/impl_sse to src/impl
+
+
+HMMER configuration:
+ compiler:             gcc -O3 -fomit-frame-pointer -fstrict-aliasing -msse2 -pthread -fPIC
+ host:                 x86_64-unknown-linux-gnu
+ linker:
+ libraries:
+ DP implementation:    sse
+
+[pragya.asthana@cn112 hmmer-3.1b1]$ make install
+/usr/bin/install -c -d /data/hort503/pragya/software/bin
+/usr/bin/install -c -d /data/hort503/pragya/software/lib
+/usr/bin/install -c -d /data/hort503/pragya/software/include
+/usr/bin/install -c -d /data/hort503/pragya/software/share/man/man1
+/usr/bin/install -c -d /data/hort503/pragya/software/share/doc/hmmer
+ SUBDIR src
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src'
+ SUBDIR impl_sse
+make[2]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src/impl_sse'
+for file in impl_sse.h; do \
+/usr/bin/install -c -m 0644 ./$file /data/hort503/pragya/software/include/ ;\
+done
+make[2]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src/impl_sse'
+for file in alimask hmmalign hmmbuild hmmconvert hmmemit hmmfetch hmmlogo hmmpress hmmscan hmmsearch hmmsim hmmstat jackhmmer phmmer nhmmer nhmmscan hmmpgmd hmmc2; do \
+/usr/bin/install -c -m 0755 $file /data/hort503/pragya/software/bin/ ;\
+done
+/usr/bin/install: cannot stat ‘alimask’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmalign’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmbuild’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmconvert’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmemit’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmfetch’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmlogo’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmpress’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmscan’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmsearch’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmsim’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmstat’: No such file or directory
+/usr/bin/install: cannot stat ‘jackhmmer’: No such file or directory
+/usr/bin/install: cannot stat ‘phmmer’: No such file or directory
+/usr/bin/install: cannot stat ‘nhmmer’: No such file or directory
+/usr/bin/install: cannot stat ‘nhmmscan’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmpgmd’: No such file or directory
+/usr/bin/install: cannot stat ‘hmmc2’: No such file or directory
+make[1]: *** [install] Error 1
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src'
+make: *** [install] Error 2
+[pragya.asthana@cn112 hmmer-3.1b1]$ ^C
+[pragya.asthana@cn112 hmmer-3.1b1]$ cd /data/hort503/pragya/newsoftware/
+[pragya.asthana@cn112 newsoftware]$ ls
+hmmer-3.1b1  hmmer-3.1b1.tar
+[pragya.asthana@cn112 newsoftware]$ cd /data/hort503/pragya/newsoftware/hmmer-3.1b1/src
+[pragya.asthana@cn112 src]$ ls
+alimask.c                 generic_fwdback_chk.c       hmmbuild.c    hmmpgmd2msa.c              impl_dummy     nhmmer.c         p7_gmxb.h       p7_prior.c
+build.c                   generic_fwdback_rescaled.c  hmmc2.c       hmmpgmd.c                  impl_sse       nhmmscan.c       p7_gmx.c        p7_profile.c
+cachedb.c                 generic_msv.c               hmmconvert.c  hmmpgmd_client_example.pl  impl_vmx       p7_alidisplay.c  p7_gmxchk.c     p7_scoredata.c
+cachedb.h                 generic_null2.c             hmmdmstr.c    hmmpgmd.h                  itest_brute.c  p7_bg.c          p7_gmxchk.h     p7_spensemble.c
+emit.c                    generic_optacc.c            hmmdutils.c   hmmpress.c                 jackhmmer.c    p7_builder.c     p7_hmm.c        p7_tophits.c
+errors.c                  generic_stotrace.c          hmmdwrkr.c    hmmpress.itest.pl          logsum.c       p7_config.h      p7_hmmcache.c   p7_trace.c
+evalues.c                 generic_viterbi.c           hmmemit.c     hmmscan.c                  Makefile       p7_config.h.in   p7_hmmcache.h   phmmer.c
+eweight.c                 generic_vtrace.c            hmmer.c       hmmsearch.c                Makefile.in    p7_domaindef.c   p7_hmmfile.c    seqmodel.c
+generic_decoding.c        h2_io.c                     hmmer.h       hmmsim.c                   modelconfig.c  p7_gbands.c      p7_hmmwindow.c  tracealign.c
+generic_fwdback_banded.c  heatmap.c                   hmmfetch.c    hmmstat.c                  modelstats.c   p7_gbands.h      p7_null3.c
+generic_fwdback.c         hmmalign.c                  hmmlogo.c     impl                       mpisupport.c   p7_gmxb.c        p7_pipeline.c
+[pragya.asthana@cn112 src]$ cd bin
+bash: cd: bin: No such file or directory
+[pragya.asthana@cn112 src]$ cd ..
+[pragya.asthana@cn112 hmmer-3.1b1]$ ls
+aclocal.m4    config.log     config.sub  configure.ac  documentation  INSTALL     libdivsufsort  Makefile     profmark  RELEASE-NOTES  testsuite  Userguide.pdf
+config.guess  config.status  configure   COPYRIGHT     easel          install-sh  LICENSE        Makefile.in  README    src            tutorial
+[pragya.asthana@cn112 hmmer-3.1b1]$ cd
+[pragya.asthana@cn112 ~]$ ls
+blast_test.srun  blast_test.sruny  downloads  pragya  slurm-8763497.out  test.txt
+[pragya.asthana@cn112 ~]$ cd pragya/
+[pragya.asthana@cn112 pragya]$ ls
+[pragya.asthana@cn112 pragya]$ cd /data/hort503/
+[pragya.asthana@cn112 hort503]$ ls
+david.sliman  example-data  hort503_01_s18  jonathan.eagle  jschnore  lindani  pragya  richard.manasseh  stephen.ficklin  xin.xin
+[pragya.asthana@cn112 hort503]$ cd pragya/
+[pragya.asthana@cn112 pragya]$ ls
+blastp-rice_all-vs-swissprot-th_1e-6.txt  blast_test.srun  blast_test.sruny  newsoftware  pragya  slurm-8763497.out  slurm-8763819.out  software  test.txt
+[pragya.asthana@cn112 pragya]$ cd newsoftware/
+[pragya.asthana@cn112 newsoftware]$ ls
+hmmer-3.1b1  hmmer-3.1b1.tar
+[pragya.asthana@cn112 newsoftware]$ salloc: Job 8794876 has exceeded its time limit and its allocation has been revoked.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: cn112: task 0: Terminated
+[pragya.asthana@login-p1n02 ~]$ man idev
+No manual entry for idev
+[pragya.asthana@login-p1n02 ~]$ idev -h
+Idev interactively runs commands on a compute node.
+See 'man salloc' for idev options to reserve a job allocation.
+To use a GPU within idev: use 'srun yourCommand', e.g. 'srun python -i'.
+To use X11 forwarding from a compute node:
+Use 'ssh -Y' or more secure 'ssh -X' to log into Kamiak.
+Within idev, use 'srun --x11' to launch a task with a user interface.
+Recommend using 'srun -I' to launch a task without hanging.
+Default time is 60 minutes.  Use '-t yourMinutes' to override.
+
+Usage: salloc [OPTIONS...] [executable [args...]]
+
+Parallel run options:
+-A, --account=name          charge job to specified account
+  --begin=time            defer job until HH:MM MM/DD/YY
+  --bell                  ring the terminal bell when the job is allocated
+  --bb=<spec>             burst buffer specifications
+  --bbf=<file_name>       burst buffer specification file
+-c, --cpus-per-task=ncpus   number of cpus required per task
+  --comment=name          arbitrary comment
+  --cpu-freq=min[-max[:gov]] requested cpu frequency (and governor)
+  --delay-boot=mins       delay boot for desired node features
+-d, --dependency=type:jobid defer job until condition on jobid is satisfied
+  --deadline=time         remove the job if no ending possible before
+                          this deadline (start > (deadline - time[-min]))
+-D, --chdir=path            change working directory
+  --get-user-env          used by Moab.  See srun man page.
+  --gid=group_id          group ID to run job as (user root only)
+  --gres=list             required generic resources
+  --gres-flags=opts       flags related to GRES management
+-H, --hold                  submit job in held state
+-I, --immediate[=secs]      exit if resources not available in "secs"
+  --jobid=id              specify jobid to use
+-J, --job-name=jobname      name of job
+-k, --no-kill               do not kill job on node failure
+-K, --kill-command[=signal] signal to send terminating job
+-L, --licenses=names        required license, comma separated
+-M, --clusters=names        Comma separated list of clusters to issue
+                          commands to.  Default is current cluster.
+                          Name of 'all' will submit to run on all clusters.
+                          NOTE: SlurmDBD must up.
+-m, --distribution=type     distribution method for processes to nodes
+                          (type = block|cyclic|arbitrary)
+  --mail-type=type        notify on state change: BEGIN, END, FAIL or ALL
+  --mail-user=user        who to send email notification for job state
+                          changes
+  --mcs-label=mcs         mcs label if mcs plugin mcs/group is used
+-n, --tasks=N               number of processors required
+  --nice[=value]          decrease scheduling priority by value
+  --no-bell               do NOT ring the terminal bell
+  --ntasks-per-node=n     number of tasks to invoke on each node
+-N, --nodes=N               number of nodes on which to run (N = min[-max])
+-O, --overcommit            overcommit resources
+  --power=flags           power management options
+  --priority=value        set the priority of the job to value
+  --profile=value         enable acct_gather_profile for detailed data
+                          value is all or none or any combination of
+                          energy, lustre, network or task
+-p, --partition=partition   partition requested
+-q, --qos=qos               quality of service
+-Q, --quiet                 quiet mode (suppress informational messages)
+  --reboot                reboot compute nodes before starting job
+-s, --oversubscribe         oversubscribe resources with other jobs
+  --signal=[B:]num[@time] send signal when time limit within time seconds
+  --spread-job            spread job across as many nodes as possible
+  --switches=max-switches{@max-time-to-wait}
+                          Optimum switches and max time to wait for optimum
+-S, --core-spec=cores       count of reserved cores
+  --thread-spec=threads   count of reserved threads
+-t, --time=minutes          time limit
+  --time-min=minutes      minimum time limit (if distinct)
+  --uid=user_id           user ID to run job as (user root only)
+  --use-min-nodes         if a range of node counts is given, prefer the
+                          smaller count
+-v, --verbose               verbose mode (multiple -v's increase verbosity)
+  --wckey=wckey           wckey to run job under
+
+Constraint options:
+  --cluster-constraint=list specify a list of cluster constraints
+  --contiguous            demand a contiguous range of nodes
+-C, --constraint=list       specify a list of constraints
+-F, --nodefile=filename     request a specific list of hosts
+  --mem=MB                minimum amount of real memory
+  --mincpus=n             minimum number of logical processors (threads)
+                          per node
+  --reservation=name      allocate resources from named reservation
+  --tmp=MB                minimum amount of temporary disk
+-w, --nodelist=hosts...     request a specific list of hosts
+-x, --exclude=hosts...      exclude a specific list of hosts
+
+Consumable resources related options:
+  --exclusive[=user]      allocate nodes in exclusive mode when
+                          cpu consumable resource is enabled
+  --exclusive[=mcs]       allocate nodes in exclusive mode when
+                          cpu consumable resource is enabled
+                          and mcs plugin is enabled
+  --mem-per-cpu=MB        maximum amount of real memory per allocated
+                          cpu required by the job.
+                          --mem >= --mem-per-cpu if --mem is specified.
+
+Affinity/Multi-core options: (when the task/affinity plugin is enabled)
+-B  --extra-node-info=S[:C[:T]]            Expands to:
+   --sockets-per-node=S   number of sockets per node to allocate
+   --cores-per-socket=C   number of cores per socket to allocate
+   --threads-per-core=T   number of threads per core to allocate
+                          each field can be 'min' or wildcard '*'
+                          total cpus requested = (N x S x C x T)
+
+  --ntasks-per-core=n     number of tasks to invoke on each core
+  --ntasks-per-socket=n   number of tasks to invoke on each socket
+
+Options provided by plugins:
+
+  --x11=[batch|first|last|all]
+                          Export x11 display on first|last|all allocated
+                          node(s)
+
+
+Help options:
+-h, --help                  show this help message
+-u, --usage                 display brief usage message
+
+Other options:
+-V, --version               output version information and exit
+
+[pragya.asthana@login-p1n02 ~]$ idev -t 120
+Idev interactively runs commands on a compute node.
+See 'man salloc' for idev options to reserve a job allocation.
+To use a GPU within idev: use 'srun yourCommand', e.g. 'srun python -i'.
+To use X11 forwarding from a compute node:
+Use 'ssh -Y' or more secure 'ssh -X' to log into Kamiak.
+Within idev, use 'srun --x11' to launch a task with a user interface.
+Recommend using 'srun -I' to launch a task without hanging.
+Default time is 60 minutes.  Use '-t yourMinutes' to override.
+
+salloc: Pending job allocation 8797748
+salloc: job 8797748 queued and waiting for resources
+salloc: job 8797748 has been allocated resources
+salloc: Granted job allocation 8797748
+Allocated nodes: cn112
+[pragya.asthana@cn112 ~]$ cd /data/hort503/pragya/newsoftware/
+[pragya.asthana@cn112 newsoftware]$ ls
+hmmer-3.1b1  hmmer-3.1b1.tar
+[pragya.asthana@cn112 newsoftware]$ ./configure
+bash: ./configure: No such file or directory
+[pragya.asthana@cn112 newsoftware]$ cd hmmer-3.1b1
+[pragya.asthana@cn112 hmmer-3.1b1]$ ./configure
+configure: Configuring HMMER for your system.
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+configure: Full HMMER source distribution - using full configuration
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for C compiler vendor... gnu
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for cc_r... gcc
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking how to run the C preprocessor... gcc -E
+checking for C compiler vendor... (cached) gnu
+checking for gcc option to accept ISO C99... none needed
+checking for gcc option to accept ISO Standard C... (cached) none needed
+checking for ranlib... ranlib
+checking for ar... /usr/bin/ar
+checking whether you have a GNU make... yes, you do; and we assume you will use it!
+checking whether C compiler accepts -fstrict-aliasing... yes
+checking for gcc architecture flag...
+checking for x86 cpuid 0 output... 16:756e6547:6c65746e:49656e69
+checking for x86 cpuid 1 output... 50654:12200800:7ffefbff:bfebfbff
+checking whether C compiler accepts -march=pentium2... no
+checking whether C compiler accepts -mcpu=pentium2... no
+checking whether C compiler accepts -mpentium2... no
+checking whether C compiler accepts -march=pentiumpro... no
+checking whether C compiler accepts -mcpu=pentiumpro... no
+checking whether C compiler accepts -mpentiumpro... no
+checking for gcc architecture flag... unknown
+checking whether C compiler accepts -O3 -fomit-frame-pointer -fstrict-aliasing... yes
+checking for gcc option to produce PIC... -fPIC
+checking whether C compiler accepts -msse2... yes
+checking compiler support for sse2 cast functions... yes
+checking whether SSE2 is supported... yes
+checking whether _MM_SET_FLUSH_ZERO_MODE is supported... yes
+configure: Activating Intel/AMD SSE optimized DP implementation
+checking compiler support --start-group... yes
+checking for gzip... /usr/bin/gzip
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for sys/types.h... (cached) yes
+checking sys/sysctl.h usability... yes
+checking sys/sysctl.h presence... yes
+checking for sys/sysctl.h... yes
+checking for unistd.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking endian.h usability... yes
+checking endian.h presence... yes
+checking for endian.h... yes
+checking whether byte ordering is bigendian... no
+checking for uint8_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for off_t... yes
+checking for mkstemp... yes
+checking for popen... yes
+checking for strcasecmp... yes
+checking for times... yes
+checking for getpid... yes
+checking for sysctl... yes
+checking for sysconf... yes
+checking for getcwd... yes
+checking for stat... yes
+checking for fstat... yes
+checking for ntohs... yes
+checking for ntohl... yes
+checking for htons... yes
+checking for htonl... yes
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+configure: creating ./config.status
+config.status: creating documentation/Makefile
+config.status: creating documentation/man/Makefile
+config.status: creating src/Makefile
+config.status: creating testsuite/Makefile
+config.status: creating profmark/Makefile
+config.status: creating src/impl_sse/Makefile
+config.status: creating easel/miniapps/Makefile
+config.status: creating easel/testsuite/Makefile
+config.status: creating easel/Makefile
+config.status: creating libdivsufsort/Makefile
+config.status: creating Makefile
+config.status: creating src/p7_config.h
+config.status: src/p7_config.h is unchanged
+config.status: creating easel/esl_config.h
+config.status: easel/esl_config.h is unchanged
+config.status: creating libdivsufsort/divsufsort.h
+config.status: libdivsufsort/divsufsort.h is unchanged
+config.status: linking src/impl_sse to src/impl
+
+
+HMMER configuration:
+ compiler:             gcc -O3 -fomit-frame-pointer -fstrict-aliasing -msse2 -pthread -fPIC
+ host:                 x86_64-unknown-linux-gnu
+ linker:
+ libraries:
+ DP implementation:    sse
+
+[pragya.asthana@cn112 hmmer-3.1b1]$ make
+ SUBDIR easel
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/easel'
+ CC easel.o
+ CC esl_alphabet.o
+ CC esl_buffer.o
+ CC esl_cluster.o
+ CC esl_composition.o
+ CC esl_dirichlet.o
+ CC esl_distance.o
+ CC esl_dmatrix.o
+ CC esl_exponential.o
+ CC esl_fileparser.o
+ CC esl_gamma.o
+ CC esl_getopts.o
+ CC esl_gev.o
+ CC esl_gumbel.o
+ CC esl_histogram.o
+ CC esl_hmm.o
+ CC esl_hyperexp.o
+ CC esl_keyhash.o
+ CC esl_mem.o
+ CC esl_minimizer.o
+ CC esl_mixgev.o
+ CC esl_mpi.o
+ CC esl_msa.o
+ CC esl_msacluster.o
+ CC esl_msafile.o
+ CC esl_msafile2.o
+ CC esl_msafile_a2m.o
+ CC esl_msafile_afa.o
+ CC esl_msafile_clustal.o
+ CC esl_msafile_phylip.o
+ CC esl_msafile_psiblast.o
+ CC esl_msafile_selex.o
+ CC esl_msafile_stockholm.o
+ CC esl_msashuffle.o
+ CC esl_msaweight.o
+ CC esl_normal.o
+ CC esl_paml.o
+ CC esl_random.o
+ CC esl_randomseq.o
+ CC esl_ratematrix.o
+ CC esl_recorder.o
+ CC esl_regexp.o
+ CC esl_rootfinder.o
+ CC esl_scorematrix.o
+ CC esl_sq.o
+ CC esl_sqio.o
+ CC esl_sqio_ascii.o
+ CC esl_sqio_ncbi.o
+ CC esl_sse.o
+ CC esl_ssi.o
+ CC esl_stack.o
+ CC esl_stats.o
+ CC esl_stopwatch.o
+ CC esl_stretchexp.o
+ CC esl_threads.o
+ CC esl_translate.o
+ CC esl_tree.o
+ CC esl_vectorops.o
+ CC esl_vmx.o
+ CC esl_weibull.o
+ CC esl_workqueue.o
+ CC esl_wuss.o
+ AR libeasel.a
+ SUBDIR miniapps
+make[2]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/easel/miniapps'
+ CC esl-afetch.o
+ GEN esl-afetch
+ CC esl-alimanip.o
+ GEN esl-alimanip
+ CC esl-alimap.o
+ GEN esl-alimap
+ CC esl-alimask.o
+ GEN esl-alimask
+ CC esl-alimerge.o
+ GEN esl-alimerge
+ CC esl-alipid.o
+ GEN esl-alipid
+ CC esl-alistat.o
+ GEN esl-alistat
+ CC esl-cluster.o
+ GEN esl-cluster
+ CC esl-compalign.o
+ GEN esl-compalign
+ CC esl-compstruct.o
+ GEN esl-compstruct
+ CC esl-construct.o
+ GEN esl-construct
+ CC esl-histplot.o
+ GEN esl-histplot
+ CC esl-mask.o
+ GEN esl-mask
+ CC esl-reformat.o
+ GEN esl-reformat
+ CC esl-selectn.o
+ GEN esl-selectn
+ CC esl-seqrange.o
+ GEN esl-seqrange
+ CC esl-seqstat.o
+ GEN esl-seqstat
+ CC esl-sfetch.o
+ GEN esl-sfetch
+ CC esl-shuffle.o
+ GEN esl-shuffle
+ CC esl-ssdraw.o
+ GEN esl-ssdraw
+ CC esl-stranslate.o
+ GEN esl-stranslate
+ CC esl-weight.o
+ GEN esl-weight
+make[2]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/easel/miniapps'
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/easel'
+ SUBDIR libdivsufsort
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/libdivsufsort'
+ CC divsufsort.o
+ AR libdivsufsort.a
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/libdivsufsort'
+ SUBDIR src
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src'
+ CC alimask.o
+ CC build.o
+ CC cachedb.o
+ CC emit.o
+ CC errors.o
+ CC evalues.o
+ CC eweight.o
+ CC generic_decoding.o
+ CC generic_fwdback.o
+ CC generic_fwdback_chk.o
+ CC generic_fwdback_banded.o
+ CC generic_null2.o
+ CC generic_msv.o
+ CC generic_optacc.o
+ CC generic_stotrace.o
+ CC generic_viterbi.o
+ CC generic_vtrace.o
+ CC h2_io.o
+ CC heatmap.o
+ CC hmmlogo.o
+ CC hmmdmstr.o
+ CC hmmdwrkr.o
+ CC hmmdutils.o
+ CC hmmer.o
+ CC logsum.o
+ CC modelconfig.o
+ CC modelstats.o
+ CC mpisupport.o
+ CC seqmodel.o
+ CC tracealign.o
+ CC p7_alidisplay.o
+ CC p7_bg.o
+ CC p7_builder.o
+ CC p7_domaindef.o
+ CC p7_gbands.o
+ CC p7_gmx.o
+ CC p7_gmxb.o
+ CC p7_gmxchk.o
+ CC p7_hmm.o
+ CC p7_hmmcache.o
+ CC p7_hmmfile.o
+ CC p7_hmmwindow.o
+ CC p7_null3.o
+ CC p7_pipeline.o
+ CC p7_prior.o
+ CC p7_profile.o
+ CC p7_spensemble.o
+ CC p7_tophits.o
+ CC p7_trace.o
+ CC p7_scoredata.o
+ CC hmmpgmd2msa.o
+ AR libhmmer-src.stamp
+ SUBDIR impl_sse
+make[2]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src/impl_sse'
+ CC decoding.o
+ CC fwdback.o
+ CC io.o
+ CC ssvfilter.o
+ CC msvfilter.o
+ CC null2.o
+ CC optacc.o
+ CC stotrace.o
+ CC vitfilter.o
+ CC p7_omx.o
+ CC p7_oprofile.o
+ CC mpi.o
+ AR libhmmer-impl.stamp
+make[2]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src/impl_sse'
+ GEN alimask
+ CC hmmalign.o
+ GEN hmmalign
+ CC hmmbuild.o
+ GEN hmmbuild
+ CC hmmconvert.o
+ GEN hmmconvert
+ CC hmmemit.o
+ GEN hmmemit
+ CC hmmfetch.o
+ GEN hmmfetch
+ GEN hmmlogo
+ CC hmmpress.o
+ GEN hmmpress
+ CC hmmscan.o
+ GEN hmmscan
+ CC hmmsearch.o
+ GEN hmmsearch
+ CC hmmsim.o
+ GEN hmmsim
+ CC hmmstat.o
+ GEN hmmstat
+ CC jackhmmer.o
+ GEN jackhmmer
+ CC phmmer.o
+ GEN phmmer
+ CC nhmmer.o
+ GEN nhmmer
+ CC nhmmscan.o
+ GEN nhmmscan
+ CC hmmpgmd.o
+ GEN hmmpgmd
+ CC hmmc2.o
+ GEN hmmc2
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src'
+ SUBDIR profmark
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/profmark'
+ CC create-profmark.o
+ GEN create-profmark
+ CC rocplot.o
+ GEN rocplot
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/profmark'
+[pragya.asthana@cn112 hmmer-3.1b1]$ make install
+/usr/bin/install -c -d /usr/local/bin
+/usr/bin/install -c -d /usr/local/lib
+/usr/bin/install -c -d /usr/local/include
+/usr/bin/install -c -d /usr/local/share/man/man1
+/usr/bin/install -c -d /usr/local/share/doc/hmmer
+/usr/bin/install: cannot create directory ‘/usr/local/share/doc’: Permission denied
+make: *** [install] Error 1
+[pragya.asthana@cn112 hmmer-3.1b1]$ ./configure --help
+`configure' configures HMMER 3.1b1 to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+-h, --help              display this help and exit
+  --help=short        display options specific to this package
+  --help=recursive    display the short help of all the included packages
+-V, --version           display version information and exit
+-q, --quiet, --silent   do not print `checking...' messages
+  --cache-file=FILE   cache test results in FILE [disabled]
+-C, --config-cache      alias for `--cache-file=config.cache'
+-n, --no-create         do not create output files
+  --srcdir=DIR        find the sources in DIR [configure dir or `..']
+
+Installation directories:
+--prefix=PREFIX         install architecture-independent files in PREFIX
+                      [/usr/local]
+--exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+                      [PREFIX]
+
+By default, `make install' will install all the files in
+`/usr/local/bin', `/usr/local/lib' etc.  You can specify
+an installation prefix other than `/usr/local' using `--prefix',
+for instance `--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+--bindir=DIR            user executables [EPREFIX/bin]
+--sbindir=DIR           system admin executables [EPREFIX/sbin]
+--libexecdir=DIR        program executables [EPREFIX/libexec]
+--sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+--sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+--localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+--libdir=DIR            object code libraries [EPREFIX/lib]
+--includedir=DIR        C header files [PREFIX/include]
+--oldincludedir=DIR     C header files for non-gcc [/usr/include]
+--datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+--datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+--infodir=DIR           info documentation [DATAROOTDIR/info]
+--localedir=DIR         locale-dependent data [DATAROOTDIR/locale]
+--mandir=DIR            man documentation [DATAROOTDIR/man]
+--docdir=DIR            documentation root [DATAROOTDIR/doc/hmmer]
+--htmldir=DIR           html documentation [DOCDIR]
+--dvidir=DIR            dvi documentation [DOCDIR]
+--pdfdir=DIR            pdf documentation [DOCDIR]
+--psdir=DIR             ps documentation [DOCDIR]
+
+System types:
+--build=BUILD     configure for building on BUILD [guessed]
+--host=HOST       cross-compile to build programs to run on HOST [BUILD]
+
+Optional Features:
+--disable-option-checking  ignore unrecognized --enable/--with options
+--disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+--enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+--enable-debugging      include debugging code
+--enable-debugging=x    also set diagnostics verbosity level to <x> (1-3)
+--enable-gcov           compile for code coverage testing
+--enable-gprof          compile for gcc code profiing
+--enable-sse            enable SSE implementation
+--enable-vmx            enable Altivec/VMX implementation
+--enable-dummy          enable portable implementation
+--enable-mpi            enable MPI parallelization
+--enable-threads        enable POSIX multithreading support (default is
+                      check)
+--enable-portable-binary
+                      disable compiler optimizations that would produce
+                      unportable binaries
+--disable-pic           compile PIC objects [default=enabled for shared
+                      builds on supported platforms]
+--disable-largefile     omit support for large files
+
+Optional Packages:
+--with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+--without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+--with-xlc-arch=<arch>  specify architecture <arch> for xlc -qarch
+--with-gsl              use the GSL, GNU Scientific Library (default is no)
+--with-gcc-arch=<arch>  use architecture <arch> for gcc -march/-mtune,
+                      instead of guessing
+
+Some influential environment variables:
+CC          C compiler command
+CFLAGS      C compiler flags
+LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
+          nonstandard directory <lib dir>
+LIBS        libraries to pass to the linker, e.g. -l<library>
+CPPFLAGS    C/C++/Objective C preprocessor flags, e.g. -I<include dir> if
+          you have headers in a nonstandard directory <include dir>
+MPICC       MPI C compiler command
+CPP         C preprocessor
+PIC_FLAGS   compiler flags for PIC code
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to <eddys@janelia.hhmi.org>.
+[pragya.asthana@cn112 hmmer-3.1b1]$ ./configure --prefix=/data/hort503/pragya/newsoftware
+configure: Configuring HMMER for your system.
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+configure: Full HMMER source distribution - using full configuration
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for C compiler vendor... gnu
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for cc_r... gcc
+checking for gcc... (cached) gcc
+checking whether we are using the GNU C compiler... (cached) yes
+checking whether gcc accepts -g... (cached) yes
+checking for gcc option to accept ISO C89... (cached) none needed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking how to run the C preprocessor... gcc -E
+checking for C compiler vendor... (cached) gnu
+checking for gcc option to accept ISO C99... none needed
+checking for gcc option to accept ISO Standard C... (cached) none needed
+checking for ranlib... ranlib
+checking for ar... /usr/bin/ar
+checking whether you have a GNU make... yes, you do; and we assume you will use it!
+checking whether C compiler accepts -fstrict-aliasing... yes
+checking for gcc architecture flag...
+checking for x86 cpuid 0 output... 16:756e6547:6c65746e:49656e69
+checking for x86 cpuid 1 output... 50654:12200800:7ffefbff:bfebfbff
+checking whether C compiler accepts -march=pentium2... no
+checking whether C compiler accepts -mcpu=pentium2... no
+checking whether C compiler accepts -mpentium2... no
+checking whether C compiler accepts -march=pentiumpro... no
+checking whether C compiler accepts -mcpu=pentiumpro... no
+checking whether C compiler accepts -mpentiumpro... no
+checking for gcc architecture flag... unknown
+checking whether C compiler accepts -O3 -fomit-frame-pointer -fstrict-aliasing... yes
+checking for gcc option to produce PIC... -fPIC
+checking whether C compiler accepts -msse2... yes
+checking compiler support for sse2 cast functions... yes
+checking whether SSE2 is supported... yes
+checking whether _MM_SET_FLUSH_ZERO_MODE is supported... yes
+configure: Activating Intel/AMD SSE optimized DP implementation
+checking compiler support --start-group... yes
+checking for gzip... /usr/bin/gzip
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for sys/types.h... (cached) yes
+checking sys/sysctl.h usability... yes
+checking sys/sysctl.h presence... yes
+checking for sys/sysctl.h... yes
+checking for unistd.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking endian.h usability... yes
+checking endian.h presence... yes
+checking for endian.h... yes
+checking whether byte ordering is bigendian... no
+checking for uint8_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for off_t... yes
+checking for mkstemp... yes
+checking for popen... yes
+checking for strcasecmp... yes
+checking for times... yes
+checking for getpid... yes
+checking for sysctl... yes
+checking for sysconf... yes
+checking for getcwd... yes
+checking for stat... yes
+checking for fstat... yes
+checking for ntohs... yes
+checking for ntohl... yes
+checking for htons... yes
+checking for htonl... yes
+checking for _LARGEFILE_SOURCE value needed for large files... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+configure: creating ./config.status
+config.status: creating documentation/Makefile
+config.status: creating documentation/man/Makefile
+config.status: creating src/Makefile
+config.status: creating testsuite/Makefile
+config.status: creating profmark/Makefile
+config.status: creating src/impl_sse/Makefile
+config.status: creating easel/miniapps/Makefile
+config.status: creating easel/testsuite/Makefile
+config.status: creating easel/Makefile
+config.status: creating libdivsufsort/Makefile
+config.status: creating Makefile
+config.status: creating src/p7_config.h
+config.status: src/p7_config.h is unchanged
+config.status: creating easel/esl_config.h
+config.status: easel/esl_config.h is unchanged
+config.status: creating libdivsufsort/divsufsort.h
+config.status: libdivsufsort/divsufsort.h is unchanged
+config.status: linking src/impl_sse to src/impl
+
+
+HMMER configuration:
+ compiler:             gcc -O3 -fomit-frame-pointer -fstrict-aliasing -msse2 -pthread -fPIC
+ host:                 x86_64-unknown-linux-gnu
+ linker:
+ libraries:
+ DP implementation:    sse
+
+[pragya.asthana@cn112 hmmer-3.1b1]$ make
+ SUBDIR easel
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/easel'
+ SUBDIR miniapps
+make[2]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/easel/miniapps'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/easel/miniapps'
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/easel'
+ SUBDIR libdivsufsort
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/libdivsufsort'
+ CC divsufsort.o
+ AR libdivsufsort.a
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/libdivsufsort'
+ SUBDIR src
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src'
+ SUBDIR impl_sse
+make[2]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src/impl_sse'
+make[2]: `libhmmer-impl.stamp' is up to date.
+make[2]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src/impl_sse'
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src'
+ SUBDIR profmark
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/profmark'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/profmark'
+[pragya.asthana@cn112 hmmer-3.1b1]$ make install
+/usr/bin/install -c -d /data/hort503/pragya/newsoftware/bin
+/usr/bin/install -c -d /data/hort503/pragya/newsoftware/lib
+/usr/bin/install -c -d /data/hort503/pragya/newsoftware/include
+/usr/bin/install -c -d /data/hort503/pragya/newsoftware/share/man/man1
+/usr/bin/install -c -d /data/hort503/pragya/newsoftware/share/doc/hmmer
+ SUBDIR src
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src'
+ SUBDIR impl_sse
+make[2]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src/impl_sse'
+for file in impl_sse.h; do \
+/usr/bin/install -c -m 0644 ./$file /data/hort503/pragya/newsoftware/include/ ;\
+done
+make[2]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src/impl_sse'
+for file in alimask hmmalign hmmbuild hmmconvert hmmemit hmmfetch hmmlogo hmmpress hmmscan hmmsearch hmmsim hmmstat jackhmmer phmmer nhmmer nhmmscan hmmpgmd hmmc2; do \
+/usr/bin/install -c -m 0755 $file /data/hort503/pragya/newsoftware/bin/ ;\
+done
+/usr/bin/install -c -m 0755 libhmmer.a /data/hort503/pragya/newsoftware/lib/
+for file in hmmer.h cachedb.h p7_gbands.h p7_gmxb.h p7_gmxchk.h p7_hmmcache.h; do \
+/usr/bin/install -c -m 0644 ./$file /data/hort503/pragya/newsoftware/include/ ;\
+done
+/usr/bin/install -c -m 0644 p7_config.h /data/hort503/pragya/newsoftware/include/ ;\
+
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/src'
+ SUBDIR documentation
+make[1]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/documentation'
+ SUBDIR man
+make[2]: Entering directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/documentation/man'
+for file in hmmer hmmalign hmmbuild hmmconvert hmmemit hmmfetch hmmpgmd hmmpress hmmscan hmmsearch hmmsim hmmstat jackhmmer phmmer nhmmer nhmmscan alimask; do \
+/usr/bin/install -c -m 0755 ./$file.man /data/hort503/pragya/newsoftware/share/man/man1/${file}.1 ;\
+done
+make[2]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/documentation/man'
+make[1]: Leaving directory `/data/hort503/pragya/newsoftware/hmmer-3.1b1/documentation'
+[pragya.asthana@cn112 hmmer-3.1b1]$ cd ..
+[pragya.asthana@cn112 newsoftware]$ ls
+bin  hmmer-3.1b1  hmmer-3.1b1.tar  include  lib  share
+[pragya.asthana@cn112 newsoftware]$ cd bin
+[pragya.asthana@cn112 bin]$ ls
+alimask   hmmbuild  hmmconvert  hmmfetch  hmmpgmd   hmmscan    hmmsim   jackhmmer  nhmmscan
+hmmalign  hmmc2     hmmemit     hmmlogo   hmmpress  hmmsearch  hmmstat  nhmmer     phmmer
+[pragya.asthana@cn112 bin]$ R
+bash: R: command not found
+[pragya.asthana@cn112 bin]$ /data/hort503/pragya/newsoftware/hmmer
+bash: /data/hort503/pragya/newsoftware/hmmer: No such file or directory
+[pragya.asthana@cn112 bin]$ /data/hort503/pragya/newsoftware/HMMER
+bash: /data/hort503/pragya/newsoftware/HMMER: No such file or directory
+[pragya.asthana@cn112 bin]$ /data/hort503/pragya/newsoftware/hmmsearch
+bash: /data/hort503/pragya/newsoftware/hmmsearch: No such file or directory
+[pragya.asthana@cn112 bin]$ /data/hort503/pragya/newsoftware/bin/hmmsearch
+Incorrect number of command line arguments.
+Usage: hmmsearch [options] <hmmfile> <seqdb>
+
+where most common options are:
+-h : show brief help on version and usage
+
+To see more help on available options, do /data/hort503/pragya/newsoftware/bin/hmmsearch -h
+
+[pragya.asthana@cn112 bin]$ cd
+[pragya.asthana@cn112 ~]$ /data/hort503/pragya/newsoftware/bin/hmmsearch
+Incorrect number of command line arguments.
+Usage: hmmsearch [options] <hmmfile> <seqdb>
+
+where most common options are:
+-h : show brief help on version and usage
+
+To see more help on available options, do /data/hort503/pragya/newsoftware/bin/hmmsearch -h
+
+[pragya.asthana@cn112 ~]$ uname -a
+Linux cn112 3.10.0-693.11.6.el7.x86_64 #1 SMP Thu Jan 4 01:06:37 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+[pragya.asthana@cn112 ~]$ cd /data/hort503/pragya/newsoftware
+[pragya.asthana@cn112 newsoftware]$ wget 'http://www.drive5.com/muscle/downloads3.8.31_i86linux64.tar.gz'
+--2019-04-24 12:53:21--  http://www.drive5.com/muscle/downloads3.8.31_i86linux64.tar.gz
+Resolving www.drive5.com (www.drive5.com)... 199.195.116.69
+Connecting to www.drive5.com (www.drive5.com)|199.195.116.69|:80... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2019-04-24 12:53:21 ERROR 404: Not Found.
+
+[pragya.asthana@cn112 newsoftware]$ wget 'http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux64.tar.gz'
+--2019-04-24 12:54:52--  http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux64.tar.gz
+Resolving www.drive5.com (www.drive5.com)... 199.195.116.69
+Connecting to www.drive5.com (www.drive5.com)|199.195.116.69|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 487906 (476K) [application/x-gzip]
+Saving to: ‘muscle3.8.31_i86linux64.tar.gz’
+
+100%[===========================================================================================================================>] 487,906      486KB/s   in 1.0s
+
+2019-04-24 12:54:53 (486 KB/s) - ‘muscle3.8.31_i86linux64.tar.gz’ saved [487906/487906]
+
+[pragya.asthana@cn112 newsoftware]$ ls
+bin  hmmer-3.1b1  hmmer-3.1b1.tar  include  lib  muscle3.8.31_i86linux64.tar.gz  share
+[pragya.asthana@cn112 newsoftware]$ gzip -d muscle3.8.31_i86linux64.tar.gz
+[pragya.asthana@cn112 newsoftware]$ tar -xf muscle3.8.31_i86linux64.tar
+[pragya.asthana@cn112 newsoftware]$ ls
+bin  hmmer-3.1b1  hmmer-3.1b1.tar  include  lib  muscle3.8.31_i86linux64  muscle3.8.31_i86linux64.tar  share
+[pragya.asthana@cn112 newsoftware]$ ./muscle3.8.31_i86linux64
+
+MUSCLE v3.8.31 by Robert C. Edgar
+
+http://www.drive5.com/muscle
+This software is donated to the public domain.
+Please cite: Edgar, R.C. Nucleic Acids Res 32(5), 1792-97.
+
+
+Basic usage
+
+muscle -in <inputfile> -out <outputfile>
+
+Common options (for a complete list please see the User Guide):
+
+-in <inputfile>    Input file in FASTA format (default stdin)
+-out <outputfile>  Output alignment in FASTA format (default stdout)
+-diags             Find diagonals (faster for similar sequences)
+-maxiters <n>      Maximum number of iterations (integer, default 16)
+-maxhours <h>      Maximum time to iterate in hours (default no limit)
+-html              Write output in HTML format (default FASTA)
+-msf               Write output in GCG MSF format (default FASTA)
+-clw               Write output in CLUSTALW format (default FASTA)
+-clwstrict         As -clw, with 'CLUSTAL W (1.81)' header
+-log[a] <logfile>  Log to file (append if -loga, overwrite if -log)
+-quiet             Do not write progress messages to stderr
+-version           Display version information and exit
+
+Without refinement (very fast, avg accuracy similar to T-Coffee): -maxiters 2
+Fastest possible (amino acids): -maxiters 1 -diags -sv -distance1 kbit20_3
+Fastest possible (nucleotides): -maxiters 1 -diags
+[pragya.asthana@cn112 newsoftware]$ cp muscle3.8.31_i86linux64 ./bin/muscle
+[pragya.asthana@cn112 newsoftware]$ cd bin
+[pragya.asthana@cn112 bin]$ ls
+alimask   hmmbuild  hmmconvert  hmmfetch  hmmpgmd   hmmscan    hmmsim   jackhmmer  nhmmer    phmmer
+hmmalign  hmmc2     hmmemit     hmmlogo   hmmpress  hmmsearch  hmmstat  muscle     nhmmscan
+[pragya.asthana@cn112 bin]$ blastn
+bash: blastn: command not found
+[pragya.asthana@cn112 bin]$ /data/ficklin/blastn
+bash: /data/ficklin/blastn: No such file or directory
+[pragya.asthana@cn112 bin]$ /data/ficklin/blastn
+bash: /data/ficklin/blastn: No such file or directory
+[pragya.asthana@cn112 bin]$ /data/ficklin/modulefiles/blastn
+bash: /data/ficklin/modulefiles/blastn: No such file or directory
+[pragya.asthana@cn112 bin]$ module load blast
+[pragya.asthana@cn112 bin]$ blast
+bash: blast: command not found
+[pragya.asthana@cn112 bin]$ blastn
+BLAST query/options error: Either a BLAST database or subject sequence(s) must be specified
+Please refer to the BLAST+ user manual.
+[pragya.asthana@cn112 bin]$ blastn -h
+USAGE
+blastn [-h] [-help] [-import_search_strategy filename]
+[-export_search_strategy filename] [-task task_name] [-db database_name]
+[-dbsize num_letters] [-gilist filename] [-seqidlist filename]
+[-negative_gilist filename] [-negative_seqidlist filename]
+[-entrez_query entrez_query] [-db_soft_mask filtering_algorithm]
+[-db_hard_mask filtering_algorithm] [-subject subject_input_file]
+[-subject_loc range] [-query input_file] [-out output_file]
+[-evalue evalue] [-word_size int_value] [-gapopen open_penalty]
+[-gapextend extend_penalty] [-perc_identity float_value]
+[-qcov_hsp_perc float_value] [-max_hsps int_value]
+[-xdrop_ungap float_value] [-xdrop_gap float_value]
+[-xdrop_gap_final float_value] [-searchsp int_value]
+[-sum_stats bool_value] [-penalty penalty] [-reward reward] [-no_greedy]
+[-min_raw_gapped_score int_value] [-template_type type]
+[-template_length int_value] [-dust DUST_options]
+[-filtering_db filtering_database]
+[-window_masker_taxid window_masker_taxid]
+[-window_masker_db window_masker_db] [-soft_masking soft_masking]
+[-ungapped] [-culling_limit int_value] [-best_hit_overhang float_value]
+[-best_hit_score_edge float_value] [-window_size int_value]
+[-off_diagonal_range int_value] [-use_index boolean] [-index_name string]
+[-lcase_masking] [-query_loc range] [-strand strand] [-parse_deflines]
+[-outfmt format] [-show_gis] [-num_descriptions int_value]
+[-num_alignments int_value] [-line_length line_length] [-html]
+[-max_target_seqs num_sequences] [-num_threads int_value] [-remote]
+[-version]
+
+DESCRIPTION
+Nucleotide-Nucleotide BLAST 2.7.1+
+
+Use '-help' to print detailed descriptions of command line arguments
+[pragya.asthana@cn112 bin]$ cd
+[pragya.asthana@cn112 ~]$ cd /data/h
+holder/  hort503/ hort550/ hydra/
+[pragya.asthana@cn112 ~]$ cd /data/hort503/pragya
+[pragya.asthana@cn112 pragya]$ mkdir project
+[pragya.asthana@cn112 pragya]$ cd project
+[pragya.asthana@cn112 project]$ ls
+[pragya.asthana@cn112 project]$ wget '
+> [pragya.asthana@cn112 project]$ wget '
+--2019-04-24 13:50:47--  http://%0A%5Bpragya.asthana@cn112%20project%5D$%20wget%20/
+Resolving cn112 project]$ wget  (cn112 project]$ wget )... failed: Name or service not known.
+wget: unable to resolve host address ‘cn112 project]$ wget ’
+[pragya.asthana@cn112 project]$ wget 'ftp://ftp.flybase.net/release/FB2019 02/dmel r6.27/fasta/dmel-all-translation-r6.27.fasta.gz'
+--2019-04-24 13:52:51--  ftp://ftp.flybase.net/release/FB2019%2002/dmel%20r6.27/fasta/dmel-all-translation-r6.27.fasta.gz
+       => ‘dmel-all-translation-r6.27.fasta.gz’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /release/FB2019 02/dmel r6.27/fasta ...
+No such directory ‘release/FB2019 02/dmel r6.27/fasta’.
+
+[pragya.asthana@cn112 project]$  wget 'ftp://ftp.flybase.net/release/FB2019 02/dmel r6.27
+>
+> q
+>  wget 'ftp://ftp.flybase.net/release/FB2019 02/dmel r6.27
+~
+--2019-04-24 13:55:30--  ftp://ftp.flybase.net/release/FB2019%2002/dmel%20r6.27%0A%0Aq%0A%20wget%20ftp://ftp.flybase.net/release/FB2019
+       => ‘FB2019’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /release/FB2019 02/dmel r6.27\n\nq\n wget ftp://ftp.flybase.net/release ...
+No such directory ‘release/FB2019 02/dmel r6.27\n\nq\n wget ftp://ftp.flybase.net/release’.
+
+--2019-04-24 13:55:31--  http://02/dmel
+Resolving 02 (02)... 0.0.0.2
+Connecting to 02 (02)|0.0.0.2|:80... failed: Invalid argument.
+--2019-04-24 13:55:31--  http://r6.27/
+Resolving r6.27 (r6.27)... failed: Name or service not known.
+wget: unable to resolve host address ‘r6.27’
+bash: /home/pragya.asthana: Is a directory
+[pragya.asthana@cn112 project]$ wget 'ftp://ftp.flybase.net/release/FB2019 02/dmel r6.27'
+--2019-04-24 13:55:59--  ftp://ftp.flybase.net/release/FB2019%2002/dmel%20r6.27
+       => ‘dmel r6.27’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /release/FB2019 02 ...
+No such directory ‘release/FB2019 02’.
+
+[pragya.asthana@cn112 project]$ wget 'ftp://ftp.flybase.net/releases/FB2019 02/dmel r6.27'
+--2019-04-24 13:56:48--  ftp://ftp.flybase.net/releases/FB2019%2002/dmel%20r6.27
+       => ‘dmel r6.27’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /releases/FB2019 02 ...
+No such directory ‘releases/FB2019 02’.
+
+[pragya.asthana@cn112 project]$ gzip -d dmel-all-translation-r6.02.fasta.gz
+gzip: dmel-all-translation-r6.02.fasta.gz: No such file or directory
+[pragya.asthana@cn112 project]$ wget 'ftp://ftp.flybase.net/releases/FB2019_02/dmel r6.27'
+--2019-04-24 14:10:52--  ftp://ftp.flybase.net/releases/FB2019_02/dmel%20r6.27
+       => ‘dmel r6.27’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /releases/FB2019_02 ... done.
+==> SIZE dmel r6.27 ... done.
+==> PASV ... done.    ==> RETR dmel r6.27 ...
+No such file ‘dmel r6.27’.
+
+[pragya.asthana@cn112 project]$ wget 'ftp://ftp.flybase.net/releases/FB2019_02/dmel_r6.27'
+--2019-04-24 14:11:53--  ftp://ftp.flybase.net/releases/FB2019_02/dmel_r6.27
+       => ‘dmel_r6.27’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /releases/FB2019_02 ... done.
+==> SIZE dmel_r6.27 ... done.
+==> PASV ... done.    ==> RETR dmel_r6.27 ...
+No such file ‘dmel_r6.27’.
+
+[pragya.asthana@cn112 project]$ wget 'ftp://ftp.flybase.net/releases/FB2019_02/dmel_r6.02'
+--2019-04-24 14:16:03--  ftp://ftp.flybase.net/releases/FB2019_02/dmel_r6.02
+       => ‘dmel_r6.02’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /releases/FB2019_02 ... done.
+==> SIZE dmel_r6.02 ... done.
+==> PASV ... done.    ==> RETR dmel_r6.02 ...
+No such file ‘dmel_r6.02’.
+
+[pragya.asthana@cn112 project]$ ^C
+[pragya.asthana@cn112 project]$ wget 'ftp://ftp.flybase.net/release/FB2019 02/dmel r6.27/fasta/dmel-all-translation-r6.27.fasta.gz'salloc: Job 8797748 has exceeded its time limit and its allocation has been revoked.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: cn112: task 0: Terminated
+[pragya.asthana@login-p1n02 ~]$ idev -t 120
+Idev interactively runs commands on a compute node.
+See 'man salloc' for idev options to reserve a job allocation.
+To use a GPU within idev: use 'srun yourCommand', e.g. 'srun python -i'.
+To use X11 forwarding from a compute node:
+Use 'ssh -Y' or more secure 'ssh -X' to log into Kamiak.
+Within idev, use 'srun --x11' to launch a task with a user interface.
+Recommend using 'srun -I' to launch a task without hanging.
+Default time is 60 minutes.  Use '-t yourMinutes' to override.
+
+salloc: Pending job allocation 8802129
+salloc: job 8802129 queued and waiting for resources
+salloc: job 8802129 has been allocated resources
+salloc: Granted job allocation 8802129
+Allocated nodes: cn112
+[pragya.asthana@cn112 ~]$ cd data/hort503/pragya/project
+bash: cd: data/hort503/pragya/project: No such file or directory
+[pragya.asthana@cn112 ~]$ cd /data/hort503/pragya/project
+[pragya.asthana@cn112 project]$  wget 'ftp://ftp.flybase.net/release/FB201_02/dmel_r6.27/fasta/dmel-all-translation-r6.27.fasta.gz'
+--2019-04-24 14:26:12--  ftp://ftp.flybase.net/release/FB201_02/dmel_r6.27/fasta/dmel-all-translation-r6.27.fasta.gz
+       => ‘dmel-all-translation-r6.27.fasta.gz’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /release/FB201_02/dmel_r6.27/fasta ...
+No such directory ‘release/FB201_02/dmel_r6.27/fasta’.
+
+[pragya.asthana@cn112 project]$  wget 'ftp://ftp.flybase.net/releases/FB201_02/dmel_r6.27/fasta/dmel-all-translation-r6.27.fasta.gz'
+--2019-04-24 14:26:29--  ftp://ftp.flybase.net/releases/FB201_02/dmel_r6.27/fasta/dmel-all-translation-r6.27.fasta.gz
+       => ‘dmel-all-translation-r6.27.fasta.gz’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /releases/FB201_02/dmel_r6.27/fasta ...
+No such directory ‘releases/FB201_02/dmel_r6.27/fasta’.
+
+[pragya.asthana@cn112 project]$ wget 'ftp://ftp.flybase.net/releases/FB2019_02/dmel_r6.27'
+--2019-04-24 14:41:40--  ftp://ftp.flybase.net/releases/FB2019_02/dmel_r6.27
+       => ‘dmel_r6.27’
+Resolving ftp.flybase.net (ftp.flybase.net)... 52.23.126.124
+Connecting to ftp.flybase.net (ftp.flybase.net)|52.23.126.124|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD (1) /releases/FB2019_02 ... done.
+==> SIZE dmel_r6.27 ... done.
+==> PASV ... done.    ==> RETR dmel_r6.27 ...
+No such file ‘dmel_r6.27’.
+
+[pragya.asthana@cn112 project]$ ls
+dmel-all-translation-r6.27.fasta.gz
+[pragya.asthana@cn112 project]$ gzip -d dmel-all-translation-r6.27.fasta.gz
+[pragya.asthana@cn112 project]$ less -S dmel-all-translation-r6.27.fasta
+[pragya.asthana@cn112 project]$ muscle
+bash: muscle: command not found
+[pragya.asthana@cn112 project]$ cd bin
+bash: cd: bin: No such file or directory
+[pragya.asthana@cn112 project]$ cd..
+bash: cd..: command not found
+[pragya.asthana@cn112 project]$ cd ..
+[pragya.asthana@cn112 pragya]$ cd bin/muscle
+bash: cd: bin/muscle: No such file or directory
+[pragya.asthana@cn112 pragya]$ muscle
+bash: muscle: command not found
+[pragya.asthana@cn112 pragya]$ cd newsoftware/
+[pragya.asthana@cn112 newsoftware]$ cd muscle/
+bash: cd: muscle/: No such file or directory
+[pragya.asthana@cn112 newsoftware]$ muscle
+bash: muscle: command not found
+[pragya.asthana@cn112 newsoftware]$ cd bin/
+[pragya.asthana@cn112 bin]$ muscle
+bash: muscle: command not found
+[pragya.asthana@cn112 bin]$ /muscle
+bash: /muscle: No such file or directory
+[pragya.asthana@cn112 bin]$ load muscle
+bash: load: command not found
+[pragya.asthana@cn112 bin]$ ls
+alimask   hmmc2       hmmfetch  hmmpress   hmmsim     muscle    phmmer
+hmmalign  hmmconvert  hmmlogo   hmmscan    hmmstat    nhmmer
+hmmbuild  hmmemit     hmmpgmd   hmmsearch  jackhmmer  nhmmscan
+[pragya.asthana@cn112 bin]$ /data/h
+holder/  hort503/ hort550/ hydra/
+[pragya.asthana@cn112 bin]$ /data/hort503/pragya/newsoftware/bin/muscle
+
+MUSCLE v3.8.31 by Robert C. Edgar
+
+http://www.drive5.com/muscle
+This software is donated to the public domain.
+Please cite: Edgar, R.C. Nucleic Acids Res 32(5), 1792-97.
+
+
+Basic usage
+
+muscle -in <inputfile> -out <outputfile>
+
+Common options (for a complete list please see the User Guide):
+
+-in <inputfile>    Input file in FASTA format (default stdin)
+-out <outputfile>  Output alignment in FASTA format (default stdout)
+-diags             Find diagonals (faster for similar sequences)
+-maxiters <n>      Maximum number of iterations (integer, default 16)
+-maxhours <h>      Maximum time to iterate in hours (default no limit)
+-html              Write output in HTML format (default FASTA)
+-msf               Write output in GCG MSF format (default FASTA)
+-clw               Write output in CLUSTALW format (default FASTA)
+-clwstrict         As -clw, with 'CLUSTAL W (1.81)' header
+-log[a] <logfile>  Log to file (append if -loga, overwrite if -log)
+-quiet             Do not write progress messages to stderr
+-version           Display version information and exit
+
+Without refinement (very fast, avg accuracy similar to T-Coffee): -maxiters 2
+Fastest possible (amino acids): -maxiters 1 -diags -sv -distance1 kbit20_3
+Fastest possible (nucleotides): -maxiters 1 -diags
+[pragya.asthana@cn112 bin]$ muscle -in <dmel-all-translation-r6.27.fasta> -out                                                                                       <dmel-all.fasta>
+bash: syntax error near unexpected token `newline'
+[pragya.asthana@cn112 bin]$ muscle -in dmel-all-translation-r6.27.fasta -out dmel-all.fasta
+bash: muscle: command not found
+[pragya.asthana@cn112 bin]$ cd ..
+[pragya.asthana@cn112 newsoftware]$ cd..
+bash: cd..: command not found
+[pragya.asthana@cn112 newsoftware]$ cd ..
+[pragya.asthana@cn112 pragya]$ cd project/
+[pragya.asthana@cn112 project]$ muscle -in dmel-all-translation-r6.27.fasta -out dmel-all.fasta
+bash: muscle: command not found
+[pragya.asthana@cn112 project]$ cd  dmel-all-translation-r6.27.fasta/
+bash: cd: dmel-all-translation-r6.27.fasta/: Not a directory
+[pragya.asthana@cn112 project]$ /dmel-all-translation-r6.27.fasta/
+bash: /dmel-all-translation-r6.27.fasta/: No such file or directory
+[pragya.asthana@cn112 project]$ /dmel-all-translation-r6.27.fasta
+bash: /dmel-all-translation-r6.27.fasta: No such file or directory
+[pragya.asthana@cn112 project]$ ls
+dmel-all-translation-r6.27.fasta
+[pragya.asthana@cn112 project]$ dmel-all-translation-r6.27.fasta
+bash: dmel-all-translation-r6.27.fasta: command not found
+[pragya.asthana@cn112 project]$ mkdir fastafolder
+[pragya.asthana@cn112 project]$ cd fastafolder/
+[pragya.asthana@cn112 fastafolder]$ gzip -d dmel-all-translation-r6.27.fasta.gz
+gzip: dmel-all-translation-r6.27.fasta.gz: No such file or directory
+[pragya.asthana@cn112 fastafolder]$ gzip -d dmel-all-translation-r6.27.fasta.gz
+gzip: dmel-all-translation-r6.27.fasta.gz: No such file or directory
+[pragya.asthana@cn112 fastafolder]$ ls
+dmel-all-translation-r6.27.fasta  dmel_output.fasta
+[pragya.asthana@cn112 fastafolder]$ gzip -d dmel-all-translation-r6.27.fasta.gz
+gzip: dmel-all-translation-r6.27.fasta.gz: No such file or directory
+[pragya.asthana@cn112 fastafolder]$ less
+less         lessecho     lesskey      lesspipe.sh
+[pragya.asthana@cn112 fastafolder]$ less -S dmel-all-translation-r6.27.fasta
+[pragya.asthana@cn112 fastafolder]$ muscle -in dmel-all-translation-r6.27.fasta -out dmel_output.fasta
+bash: muscle: command not found
+[pragya.asthana@cn112 fastafolder]$ muscle -in fastafolder.fasta -out dmel_output.fasta
+bash: muscle: command not found
+[pragya.asthana@cn112 fastafolder]$ ls
+dmel-all-translation-r6.27.fasta  dmel-all-translation-r6.27.fasta.gz  dmel_output.fasta
+[pragya.asthana@cn112 fastafolder]$ /data/hort503/pragya/newsoftware/bin/muscle -in dmel-all-translation-r6.27.fasta -out muscleoutput.fasta
+
+MUSCLE v3.8.31 by Robert C. Edgar
+
+http://www.drive5.com/muscle
+This software is donated to the public domain.
+Please cite: Edgar, R.C. Nucleic Acids Res 32(5), 1792-97.
+
+
+*** WARNING *** Assuming Amino (see -seqtype option), invalid letters found: U
+dmel-all-translation-r6.27 30570 seqs, max length 22949, avg  length 660
+salloc: Exceeded job memory limit1    0.30%  K-mer dist pass 1
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: cn112: task 0: Killed    0.30%  K-mer dist pass 1
+salloc: Relinquishing job allocation 8802129
+[pragya.asthana@login-p1n02 ~]$ idev -t 300
+Idev interactively runs commands on a compute node.
+See 'man salloc' for idev options to reserve a job allocation.
+To use a GPU within idev: use 'srun yourCommand', e.g. 'srun python -i'.
+To use X11 forwarding from a compute node:
+Use 'ssh -Y' or more secure 'ssh -X' to log into Kamiak.
+Within idev, use 'srun --x11' to launch a task with a user interface.
+Recommend using 'srun -I' to launch a task without hanging.
+Default time is 60 minutes.  Use '-t yourMinutes' to override.
+
+salloc: Pending job allocation 8806351
+salloc: job 8806351 queued and waiting for resources
+salloc: job 8806351 has been allocated resources
+salloc: Granted job allocation 8806351
+Allocated nodes: cn108
+[pragya.asthana@cn108 ~]$ cd /data/hort503/pragya/project/fastafolder
+[pragya.asthana@cn108 fastafolder]$ /data/hort503/pragya/newsoftware/bin/muscle -in dmel-all-translation-r6.27.fasta -out muscleoutput.fasta
+
+MUSCLE v3.8.31 by Robert C. Edgar
+
+http://www.drive5.com/muscle
+This software is donated to the public domain.
+Please cite: Edgar, R.C. Nucleic Acids Res 32(5), 1792-97.
+
+
+*** WARNING *** Assuming Amino (see -seqtype option), invalid letters found: U
+dmel-all-translation-r6.27 30570 seqs, max length 22949, avg  length 660
+salloc: Exceeded job memory limit1    0.39%  K-mer dist pass 1
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: cn108: task 0: Killed    0.39%  K-mer dist pass 1
+salloc: Relinquishing job allocation 8806351
+[pragya.asthana@login-p1n02 ~]$
+[pragya.asthana@login-p1n02 ~]$
